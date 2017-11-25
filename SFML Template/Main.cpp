@@ -1,4 +1,5 @@
 #include <SFML\Graphics.hpp>
+#include "TextureLoader.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(512, 512), "SFML Template");
