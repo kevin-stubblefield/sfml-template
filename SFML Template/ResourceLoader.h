@@ -3,22 +3,23 @@
 #include <iostream>
 #include <unordered_map>
 
-class ResourceLoader {
-public:
-	static sf::Texture getTextureByName(std::string fileName);
-	static sf::Font getFontByName(std::string fileName);
+namespace Engine {
+	class ResourceLoader {
+	public:
+		static sf::Texture getTextureByName(std::string fileName);
+		static sf::Font getFontByName(std::string fileName);
 
-private:
-	static std::unordered_map<std::string, sf::Texture> textures;
-	static std::unordered_map<std::string, sf::Texture>::iterator textureIterator;
+	private:
+		static std::unordered_map<std::string, sf::Texture> textures;
+		static std::unordered_map<std::string, sf::Texture>::iterator textureIterator;
 
-	static std::unordered_map<std::string, sf::Font> fonts;
-	static std::unordered_map<std::string, sf::Font>::iterator fontIterator;
+		static std::unordered_map<std::string, sf::Font> fonts;
+		static std::unordered_map<std::string, sf::Font>::iterator fontIterator;
 
-	ResourceLoader();
-	~ResourceLoader();
+		ResourceLoader();
+		~ResourceLoader();
 
-	void loadTexture(std::string fileName);
-	void loadFont(std::string fileName);
-};
-
+		void loadTexture(std::string fileName);
+		void loadFont(std::string fileName);
+	};
+}
