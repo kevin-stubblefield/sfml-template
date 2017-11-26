@@ -6,6 +6,7 @@
 namespace Engine {
 	class ResourceLoader {
 	public:
+		static void init();
 		static sf::Texture getTextureByName(std::string fileName);
 		static sf::Font getFontByName(std::string fileName);
 
@@ -18,8 +19,8 @@ namespace Engine {
 
 		ResourceLoader();
 		~ResourceLoader();
-
-		void loadTexture(std::string fileName);
-		void loadFont(std::string fileName);
+		
+		static void loadTexture(std::string fileName);
+		static void loadFont(std::string fileName);
 	};
 }

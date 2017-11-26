@@ -7,11 +7,15 @@ namespace Engine {
 	std::unordered_map<std::string, sf::Font> ResourceLoader::fonts;
 	std::unordered_map<std::string, sf::Font>::iterator ResourceLoader::fontIterator;
 
+	void ResourceLoader::init() {
+		loadTexture("player.png");
+	}
+
 	sf::Texture ResourceLoader::getTextureByName(std::string fileName) {
 		textureIterator = textures.find(fileName);
 		sf::Texture returnValue;
 		if (textureIterator != textures.end()) returnValue = textures[fileName];
-		return returnValue;		
+		return returnValue;
 	}
 
 	sf::Font ResourceLoader::getFontByName(std::string fileName) {
@@ -26,7 +30,7 @@ namespace Engine {
 		if (textureIterator != textures.end()) return;
 
 		sf::Texture newTexture;
-		newTexture.loadFromFile(fileName);
+		newTexture.loadFromFile("assets\\images\\" + fileName);
 		textures[fileName] = newTexture;
 	}
 
@@ -35,7 +39,7 @@ namespace Engine {
 		if (fontIterator != fonts.end()) return;
 
 		sf::Font newFont;
-		newFont.loadFromFile(fileName);
+		newFont.loadFromFile("assets\\fonts\\" + fileName);
 		fonts[fileName] = newFont;
 	}
 
