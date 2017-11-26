@@ -7,7 +7,8 @@ sf::Texture ResourceLoader::getTextureByName(std::string fileName) {
 }
 
 sf::Font ResourceLoader::getFontByName(std::string fileName) {
-	return sf::Font();
+	fontIterator = fonts.find(fileName);
+	if (fontIterator != fonts.end()) return fonts[fileName];
 }
 
 void ResourceLoader::loadTexture(std::string fileName) {
