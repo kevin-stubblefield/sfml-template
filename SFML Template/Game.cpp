@@ -2,9 +2,7 @@
 #include "Player.h"
 
 Game::Game() {
-	Engine::ResourceLoader::init();
-	sf::Texture playerTexture = Engine::ResourceLoader::getTextureByName("player.png");
-	Player* player = new Player(playerTexture);
+	Player* player = new Player(*Engine::ResourceLoader::getInstance()->getTextureByName("player.png"));
 	objects.push_back(player);
 }
 

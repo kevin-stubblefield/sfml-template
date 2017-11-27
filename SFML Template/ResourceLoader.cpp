@@ -1,26 +1,30 @@
 #include "ResourceLoader.h"
 
 namespace Engine {
-	std::unordered_map<std::string, sf::Texture> ResourceLoader::textures;
-	std::unordered_map<std::string, sf::Texture>::iterator ResourceLoader::textureIterator;
+	ResourceLoader* ResourceLoader::_resourceLoader = NULL;
 
-	std::unordered_map<std::string, sf::Font> ResourceLoader::fonts;
-	std::unordered_map<std::string, sf::Font>::iterator ResourceLoader::fontIterator;
+	ResourceLoader* ResourceLoader::getInstance() {
+		if (_resourceLoader == NULL) {
+			_resourceLoader = new ResourceLoader();
+		}
+
+		return _resourceLoader;
+	}
 
 	void ResourceLoader::init() {
 		loadTexture("player.png");
 	}
 
-	sf::Texture ResourceLoader::getTextureByName(std::string fileName) {
+	sf::Texture* ResourceLoader::getTextureByName(std::string fileName) {
 		textureIterator = textures.find(fileName);
-		sf::Texture returnValue;
+		sf::Texture* returnValue = NULL;
 		if (textureIterator != textures.end()) returnValue = textures[fileName];
 		return returnValue;
 	}
 
-	sf::Font ResourceLoader::getFontByName(std::string fileName) {
+	sf::Font* ResourceLoader::getFontByName(std::string fileName) {
 		fontIterator = fonts.find(fileName);
-		sf::Font returnValue;
+		sf::Font* returnValue = NULL;
 		if (fontIterator != fonts.end()) returnValue = fonts[fileName];
 		return returnValue;
 	}
@@ -29,8 +33,8 @@ namespace Engine {
 		textureIterator = textures.find(fileName);
 		if (textureIterator != textures.end()) return;
 
-		sf::Texture newTexture;
-		newTexture.loadFromFile("assets\\images\\" + fileName);
+		sf::Texture* newTexture = new sf::Texture();
+		newTexture->loadFromFile("assets\\images\\" + fileName);
 		textures[fileName] = newTexture;
 	}
 
@@ -38,12 +42,13 @@ namespace Engine {
 		fontIterator = fonts.find(fileName);
 		if (fontIterator != fonts.end()) return;
 
-		sf::Font newFont;
-		newFont.loadFromFile("assets\\fonts\\" + fileName);
+		sf::Font* newFont = new sf::Font();
+		newFont->loadFromFile("assets\\fonts\\" + fileName);
 		fonts[fileName] = newFont;
 	}
 
 	ResourceLoader::ResourceLoader() {
+		init();
 	}
 
 
