@@ -14,6 +14,6 @@ public:
 	void draw(sf::RenderWindow& window);
 
 private:
-	std::vector<GameObject> objects;
+	std::vector<GameObject*> objects;
 };
 
