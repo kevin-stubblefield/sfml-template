@@ -13,7 +13,6 @@ Game::~Game() {
 void Game::update(float deltaTime) {
 	for (int i = 0; i < objects.size(); i++) {
 		objects[i]->update(deltaTime);
-		std::cout << objects[i]->getTag() << std::endl;
 	}
 }
 
