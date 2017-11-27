@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(sf::Texture& texture) : GameObject(texture) {
+Player::Player(sf::Texture* texture) : GameObject(texture) {
 }
 
 

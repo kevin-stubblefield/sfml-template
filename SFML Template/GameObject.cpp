@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
-GameObject::GameObject(sf::Texture& texture) : texture(texture) {
-	body.setTexture(texture);
+GameObject::GameObject(sf::Texture* texture) : texture(*texture) {
+	body.setTexture(*texture);
 }
 
 

@@ -3,7 +3,7 @@
 
 class Player : public GameObject {
 public:
-	Player(sf::Texture& texture);
+	Player(sf::Texture* texture);
 	~Player();
 
 	void update(float deltaTime);
